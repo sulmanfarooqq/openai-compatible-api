@@ -38,6 +38,7 @@ which is necessary for continuous integration (CI).
   `vercel deploy`
 - Serve locally: `vercel dev`
 - Vercel _Functions_ [limitations](https://vercel.com/docs/functions/limitations) (with _Edge_ runtime)
+- Do not pin Vercel edge regions in `api/handler.mjs`; let Vercel choose the region automatically.
 
 
 ### Deploy to Netlify
