@@ -121,6 +121,8 @@ Authorization: Bearer key-1,key-2,key-3
 ```
 The server will only fall back to the next key on transient upstream failures. It will not rotate keys to bypass quota exhaustion.
 
+If you deploy to Vercel, set `GEMINI_API_KEYS` in the Vercel Environment Variables for the server-side proxy. In that mode, the client auth header is only used as a fallback.
+
 
 ## Models
 

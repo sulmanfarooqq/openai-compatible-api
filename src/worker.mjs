@@ -9,9 +9,14 @@ const splitApiKeys = (value) =>
   )];
 
 const getApiKeys = (request) => {
+  const envKeys = splitApiKeys(process.env.GEMINI_API_KEYS ?? process.env.GEMINI_API_KEY ?? "");
+  if (envKeys.length > 0) {
+    return envKeys;
+  }
+
   const auth = request.headers.get("Authorization");
   if (!auth) {
-    return splitApiKeys(process.env.GEMINI_API_KEYS ?? process.env.GEMINI_API_KEY ?? "");
+    return [];
   }
 
   const token = auth.replace(/^Bearer\s+/i, "").trim();
