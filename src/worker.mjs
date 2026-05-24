@@ -286,9 +286,16 @@ const adjustProps = (schemaPart) => {
   if (Array.isArray(schemaPart)) {
     schemaPart.forEach(adjustProps);
   } else {
-    if (schemaPart.type === "object" && schemaPart.properties && schemaPart.additionalProperties === false) {
-      delete schemaPart.additionalProperties;
-    }
+    delete schemaPart.additionalProperties;
+    delete schemaPart.propertyNames;
+    delete schemaPart.const;
+    delete schemaPart.exclusiveMinimum;
+    delete schemaPart.exclusiveMaximum;
+    delete schemaPart.patternProperties;
+    delete schemaPart.unevaluatedProperties;
+    delete schemaPart.dependentRequired;
+    delete schemaPart.dependentSchemas;
+    delete schemaPart.$schema;
     Object.values(schemaPart).forEach(adjustProps);
   }
 };
