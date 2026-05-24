@@ -75,6 +75,13 @@ Only for Node: `npm install`.
 
 Then `npm run start` / `npm run start:deno` / `npm run start:bun`.
 
+For local testing with multiple Gemini keys, create a `.env.local` file in the repo root and set:
+```sh
+GEMINI_API_KEYS=key1,key2,key3
+```
+When running `npm run start`, the local Node server will inject those keys automatically if no `Authorization` header is provided.
+This file is local-only. For Vercel, set the same value in the project Environment Variables instead.
+
 
 #### Dev mode (watch source changes)
 
@@ -106,6 +113,12 @@ _..or_:
 ```sh
 OPENAI_API_BASE="https://my-super-proxy.vercel.app/v1"
 ```
+
+If you want to provide multiple Gemini keys for reliability, you can pass them as a comma-separated `Bearer` token:
+```sh
+Authorization: Bearer key-1,key-2,key-3
+```
+The server will only fall back to the next key on transient upstream failures. It will not rotate keys to bypass quota exhaustion.
 
 
 ## Models
