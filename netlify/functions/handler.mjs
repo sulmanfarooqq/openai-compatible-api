@@ -1,5 +1,5 @@
 export const config = { path: "/*" };
 
-import worker from "../../src/worker.mjs";
+import worker from "../../src/robust-worker.mjs";
 
 export default worker.fetch;
