@@ -1,4 +1,4 @@
-import worker from "./src/worker.mjs";
+import worker from "./src/robust-worker.mjs";
 
 worker.port = +(process.env.PORT || 8080);
 const environment = process.env.NODE_ENV ?? "development";
