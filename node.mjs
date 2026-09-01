@@ -35,7 +35,7 @@ const parseEnvFile = (filePath) => {
 parseEnvFile(".env.local");
 parseEnvFile(".env");
 
-const { default: worker } = await import("./src/worker.mjs");
+const { default: worker } = await import("./src/robust-worker.mjs");
 
 const port = +(process.env.PORT || 8080);
 
